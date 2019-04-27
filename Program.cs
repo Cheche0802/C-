@@ -20,34 +20,25 @@ namespace Etapa1 {
 
             var OtraCollection = new List<Curso> () {
                 new Curso { Nombre = "401", Jornada = TiposJornada.Noche },
-                new Curso { Nombre = "501", Jornada = TiposJornada.Noche },
-                new Curso { Nombre = "601", Jornada = TiposJornada.Noche }
+                new Curso { Nombre = "501", Jornada = TiposJornada.Mañana },
+                new Curso { Nombre = "501", Jornada = TiposJornada.Noche }
             };
 
-            //limpiar una collecion completa
-            //OtraCollection.Clear();
-            //borrar un solo archivo de la colleccion
             //añadir un rango de colleciones
             escuela.Cursos.AddRange (OtraCollection);
-            //Curso tmp = new Curso { Nombre = "101-Vacacional", Jornada = TiposJornada.Noche };
-            //escuela.Cursos.Add (tmp);
             ImprimirCursosEscuela (escuela);
 
-            //remueve todo lo que esta en el parametro
-            Predicate<Curso>miAlgoritmo = Predicado;
-            escuela.Cursos.RemoveAll (miAlgoritmo);
-            
-            //WriteLine ("Curso.Hash: " + tmp.GetHashCode ());
-            //escuela.Cursos.Remove (tmp);
+            //Generar un delegado     
+            escuela.Cursos.RemoveAll (delegate (Curso cur) {
+                return cur.Nombre == "301";
+            });
+            //expresion lambda
+            escuela.Cursos.RemoveAll ((cur) => cur.Nombre == "501" && cur.Jornada == TiposJornada.Mañana);
+
             WriteLine ("================");
 
-            //
             ImprimirCursosEscuela (escuela);
 
-        }
-
-        private static bool Predicado (Curso curo) {
-            return curo.Nombre == "301";
         }
 
         private static void ImprimirCursosEscuela (Escuela escuela) {
