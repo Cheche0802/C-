@@ -23,16 +23,16 @@ namespace Etapa1 {
 
             Console.WriteLine (escuela);
             Console.WriteLine ("===============");
-            ImprimirCursosfor (arregloCursos);
+            ImprimirCursosforeach (arregloCursos);
 
         }
-        private static void ImprimirCursosfor (Curso[] arregloCursos) {
+        private static void ImprimirCursosforeach (Curso[] arregloCursos) {
             
             
-            for (int i = 0; i < arregloCursos.Length; i++)
+            foreach (var curso in arregloCursos)
             {
-              Console.WriteLine ($"Nombre: {arregloCursos[i].Nombre} , Id: {arregloCursos[i].UniqueId}");
-            } 
+                Console.WriteLine ($"Nombre: {curso.Nombre} , Id: {curso.UniqueId}");
+            }
 
         }
     }
