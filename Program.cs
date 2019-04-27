@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CoreEscuela.Entidades;
 using static System.Console;
 
@@ -7,11 +8,31 @@ namespace Etapa1 {
         static void Main (string[] args) {
             var escuela = new Escuela ("2rey", 2010, TiposEscuela.Bachillerato, pais: "Venezuela", ciudad: "Caracas");
 
-            escuela.Cursos = new Curso[] {
-                new Curso { Nombre = "101" },
-                new Curso { Nombre = "201" },
-                new Curso { Nombre = "301" }
+            escuela.Cursos = new List<Curso> () {
+                new Curso { Nombre = "101", Jornada = TiposJornada.Mañana },
+                new Curso { Nombre = "201", Jornada = TiposJornada.Mañana },
+                new Curso { Nombre = "301", Jornada = TiposJornada.Mañana }
             };
+               //añadir uno solamente 
+            escuela.Cursos.Add (new Curso { Nombre = "102", Jornada = TiposJornada.Tarde });
+            escuela.Cursos.Add (new Curso { Nombre = "202", Jornada = TiposJornada.Tarde });
+            escuela.Cursos.Add (new Curso { Nombre = "302", Jornada = TiposJornada.Tarde });
+
+            var OtraCollection = new List<Curso> () {
+                new Curso { Nombre = "401", Jornada = TiposJornada.Noche },
+                new Curso { Nombre = "501", Jornada = TiposJornada.Noche },
+                new Curso { Nombre = "601", Jornada = TiposJornada.Noche }
+            };
+
+             //limpiar una collecion completa
+           //OtraCollection.Clear();
+            //borrar un solo archivo de la colleccion
+            escuela.Cursos.Remove();
+
+            //añadir un rango de colleciones
+            //escuela.Cursos.AddRange(OtraCollection);
+           
+
 
             ImprimirCursosEscuela (escuela);
 
