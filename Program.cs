@@ -13,7 +13,7 @@ namespace Etapa1 {
                 new Curso { Nombre = "201", Jornada = TiposJornada.Mañana },
                 new Curso { Nombre = "301", Jornada = TiposJornada.Mañana }
             };
-               //añadir uno solamente 
+            //añadir uno solamente 
             escuela.Cursos.Add (new Curso { Nombre = "102", Jornada = TiposJornada.Tarde });
             escuela.Cursos.Add (new Curso { Nombre = "202", Jornada = TiposJornada.Tarde });
             escuela.Cursos.Add (new Curso { Nombre = "302", Jornada = TiposJornada.Tarde });
@@ -24,18 +24,30 @@ namespace Etapa1 {
                 new Curso { Nombre = "601", Jornada = TiposJornada.Noche }
             };
 
-             //limpiar una collecion completa
-           //OtraCollection.Clear();
+            //limpiar una collecion completa
+            //OtraCollection.Clear();
             //borrar un solo archivo de la colleccion
-            escuela.Cursos.Remove();
-
             //añadir un rango de colleciones
-            //escuela.Cursos.AddRange(OtraCollection);
-           
-
-
+            escuela.Cursos.AddRange (OtraCollection);
+            //Curso tmp = new Curso { Nombre = "101-Vacacional", Jornada = TiposJornada.Noche };
+            //escuela.Cursos.Add (tmp);
             ImprimirCursosEscuela (escuela);
 
+            //remueve todo lo que esta en el parametro
+            Predicate<Curso>miAlgoritmo = Predicado;
+            escuela.Cursos.RemoveAll (miAlgoritmo);
+            
+            //WriteLine ("Curso.Hash: " + tmp.GetHashCode ());
+            //escuela.Cursos.Remove (tmp);
+            WriteLine ("================");
+
+            //
+            ImprimirCursosEscuela (escuela);
+
+        }
+
+        private static bool Predicado (Curso curo) {
+            return curo.Nombre == "301";
         }
 
         private static void ImprimirCursosEscuela (Escuela escuela) {
