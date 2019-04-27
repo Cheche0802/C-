@@ -10,7 +10,9 @@ namespace Etapa1
             var escuela = new Escuela("2rey" , 2010, TiposEscuela.Bachillerato
             , pais:"Venezuela", ciudad:"Caracas");
 
-            var curso1 = new Curso()
+            var arregloCursos = new Curso[3];
+
+            arregloCursos[0] = new Curso()
             {
                 Nombre = "101"       
             };
@@ -19,17 +21,29 @@ namespace Etapa1
             {
                 Nombre = "201"       
             };
-             var curso3 = new Curso()
+            arregloCursos[1] = curso2;
+
+            arregloCursos[2] = new Curso
             {
                 Nombre = "301"       
             };
+
+          
             Console.WriteLine(escuela);
             Console.WriteLine("===============");
-            Console.WriteLine(curso1.Nombre + " , " + curso1.UniqueId );
-            Console.WriteLine($"{curso2.Nombre} , {curso2.UniqueId}"  );
-            Console.WriteLine($"{curso3.Nombre} , {curso3.UniqueId}" );
+            ImprimirCursos(arregloCursos);
 
                         
+        }
+
+        private static void ImprimirCursos(Curso[] arregloCursos)
+        {
+            int contador = 0;
+            while (contador < arregloCursos.Length)
+            {
+                Console.WriteLine($"Nombre: {arregloCursos[contador].Nombre} , Id: {arregloCursos[contador].UniqueId}");
+                contador++;
+            }
         }
     }
 }
